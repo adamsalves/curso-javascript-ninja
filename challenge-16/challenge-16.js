@@ -35,13 +35,11 @@
 	*/
 	console.log( '\nNome convertido à partir de um slug:' );
 	var fullName = 'adams-oliveira-da-silva-alves';
-	var arrFullName = fullName.split( '-' );
-	var newFullName = [];
-	arrFullName.forEach(function( item ) {
-		return newFullName.push( item.charAt( 0 ).toUpperCase() + item.slice( 1 ).concat( ' ' ) );
-	});
+	var newFullName = fullName.split( '-' ).map( function( name ) {
+		return name.charAt( 0 ).toUpperCase() + name.slice( 1 );
+	}).join( ' ' );
 	console.log( fullName );
-	console.log( newFullName.join( '' ) );
+	console.log( newFullName );
 	/*
 	- Crie um array com 5 nomes. Reduza esses nomes a uma única string, separando
 	cada nome por vírgula. Entre o penúltimo e o último nome, o separador deve
@@ -57,8 +55,8 @@
 	var friends = names.reduce(function( accumulatedValue, currentValue, index ) {
 		separator = ( index === names.length-1 ) ? ' e ' : ', ';
 		return accumulatedValue + separator + currentValue;
-	});
-	console.log( friends.concat( ' são meus amigos.' ) );
+	}).concat( ' são meus amigos.' );
+	console.log( friends );
 
 	/*
 	Usando o replace(), faça a string "Roberto" virar "Roberta".
